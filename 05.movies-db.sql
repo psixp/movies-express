@@ -1,41 +1,4 @@
--- MySQL dump 10.13  Distrib 5.7.18, for Linux (x86_64)
---
--- Host: localhost    Database: laravel-database
--- ------------------------------------------------------
--- Server version	5.7.18-0ubuntu0.16.04.1
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */
-;
 
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */
-;
-
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */
-;
-
-/*!40101 SET NAMES utf8 */
-;
-
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */
-;
-
-/*!40103 SET TIME_ZONE='+00:00' */
-;
-
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */
-;
-
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */
-;
-
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */
-;
-
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */
-;
-
---
--- Table structure for table `actor_episode`
---
 DROP DATABASE IF EXISTS movies_db;
 
 CREATE DATABASE movies_db;
@@ -44,35 +7,18 @@ USE movies_db;
 
 DROP TABLE IF EXISTS `actor_episode`;
 
-/*!40101 SET @saved_cs_client     = @@character_set_client */
-;
-
-/*!40101 SET character_set_client = utf8 */
-;
-
 CREATE TABLE `actor_episode` (
-    `id` int() unsigned NOT NULL AUTO_INCREMENT,
+    `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
     `created_at` timestamp NULL DEFAULT NULL,
     `updated_at` timestamp NULL DEFAULT NULL,
-    `actor_id` int() unsigned NOT NULL,
-    `episode_id` int() unsigned NOT NULL,
+    `actor_id` int(10) unsigned NOT NULL,
+    `episode_id` int(10) unsigned NOT NULL,
     PRIMARY KEY (`id`),
     KEY `actor_episode_actor_id_foreign` (`actor_id`),
     KEY `actor_episode_episode_id_foreign` (`episode_id`),
     CONSTRAINT `actor_episode_actor_id_foreign` FOREIGN KEY (`actor_id`) REFERENCES `actors` (`id`),
     CONSTRAINT `actor_episode_episode_id_foreign` FOREIGN KEY (`episode_id`) REFERENCES `episodes` (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 149 DEFAULT CHARSET = utf8mb4 COLLATE = utf8_unicode_ci;
-
-/*!40101 SET character_set_client = @saved_cs_client */
-;
-
---
--- Dumping data for table `actor_episode`
---
-LOCK TABLES `actor_episode` WRITE;
-
-/*!40000 ALTER TABLE `actor_episode` DISABLE KEYS */
-;
+) ENGINE = InnoDB AUTO_INCREMENT = 149 DEFAULT CHARSET = utf8mb4 ;
 
 INSERT INTO
     `actor_episode`
@@ -226,45 +172,22 @@ VALUES
     (147, NULL, NULL, 49, 55),
     (148, NULL, NULL, 49, 57);
 
-/*!40000 ALTER TABLE `actor_episode` ENABLE KEYS */
-;
 
-UNLOCK TABLES;
-
---
--- Table structure for table `actor_movie`
---
 DROP TABLE IF EXISTS `actor_movie`;
 
-/*!40101 SET @saved_cs_client     = @@character_set_client */
-;
-
-/*!40101 SET character_set_client = utf8 */
-;
 
 CREATE TABLE `actor_movie` (
-    `id` int() unsigned NOT NULL AUTO_INCREMENT,
+    `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
     `created_at` timestamp NULL DEFAULT NULL,
     `updated_at` timestamp NULL DEFAULT NULL,
-    `actor_id` int() unsigned NOT NULL,
-    `movie_id` int() unsigned NOT NULL,
+    `actor_id` int(10) unsigned NOT NULL,
+    `movie_id` int(10) unsigned NOT NULL,
     PRIMARY KEY (`id`),
     KEY `actor_movie_actor_id_foreign` (`actor_id`),
     KEY `actor_movie_movie_id_foreign` (`movie_id`),
     CONSTRAINT `actor_movie_actor_id_foreign` FOREIGN KEY (`actor_id`) REFERENCES `actors` (`id`),
     CONSTRAINT `actor_movie_movie_id_foreign` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 44 DEFAULT CHARSET = utf8mb4 COLLATE = utf8_unicode_ci;
-
-/*!40101 SET character_set_client = @saved_cs_client */
-;
-
---
--- Dumping data for table `actor_movie`
---
-LOCK TABLES `actor_movie` WRITE;
-
-/*!40000 ALTER TABLE `actor_movie` DISABLE KEYS */
-;
+) ENGINE = InnoDB AUTO_INCREMENT = 44 DEFAULT CHARSET = utf8mb4 ;
 
 INSERT INTO
     `actor_movie`
@@ -313,45 +236,21 @@ VALUES
     (42, NULL, NULL, 29, 20),
     (43, NULL, NULL, 30, 21);
 
-/*!40000 ALTER TABLE `actor_movie` ENABLE KEYS */
-;
 
-UNLOCK TABLES;
-
---
--- Table structure for table `actors`
---
 DROP TABLE IF EXISTS `actors`;
 
-/*!40101 SET @saved_cs_client     = @@character_set_client */
-;
-
-/*!40101 SET character_set_client = utf8 */
-;
-
 CREATE TABLE `actors` (
-    `id` int() unsigned NOT NULL AUTO_INCREMENT,
+    `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
     `created_at` timestamp NULL DEFAULT NULL,
     `updated_at` timestamp NULL DEFAULT NULL,
     `first_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
     `last_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
     `rating` decimal(3, 1) DEFAULT NULL,
-    `favorite_movie_id` int() unsigned DEFAULT NULL,
+    `favorite_movie_id` int(10) unsigned DEFAULT NULL,
     PRIMARY KEY (`id`),
     KEY `actors_favorite_movie_id_foreign` (`favorite_movie_id`),
     CONSTRAINT `actors_favorite_movie_id_foreign` FOREIGN KEY (`favorite_movie_id`) REFERENCES `movies` (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 50 DEFAULT CHARSET = utf8mb4 COLLATE = utf8_unicode_ci;
-
-/*!40101 SET character_set_client = @saved_cs_client */
-;
-
---
--- Dumping data for table `actors`
---
-LOCK TABLES `actors` WRITE;
-
-/*!40000 ALTER TABLE `actors` DISABLE KEYS */
-;
+) ENGINE = InnoDB AUTO_INCREMENT = 50 DEFAULT CHARSET = utf8mb4 ;
 
 INSERT INTO
     `actors`
@@ -422,46 +321,24 @@ VALUES
     (48, NULL, NULL, 'Aaron', 'Paul', 5.9, 6),
     (49, NULL, NULL, 'Anna', 'Gunn', 3.1, 7);
 
-/*!40000 ALTER TABLE `actors` ENABLE KEYS */
-;
 
-UNLOCK TABLES;
-
---
--- Table structure for table `episodes`
---
 DROP TABLE IF EXISTS `episodes`;
 
-/*!40101 SET @saved_cs_client     = @@character_set_client */
-;
-
-/*!40101 SET character_set_client = utf8 */
-;
 
 CREATE TABLE `episodes` (
-    `id` int() unsigned NOT NULL AUTO_INCREMENT,
+    `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
     `created_at` timestamp NULL DEFAULT NULL,
     `updated_at` timestamp NULL DEFAULT NULL,
     `title` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
-    `number` int() unsigned DEFAULT NULL,
+    `number` int(10) unsigned DEFAULT NULL,
     `release_date` datetime NOT NULL,
     `rating` decimal(3, 1) NOT NULL,
-    `season_id` int() unsigned DEFAULT NULL,
+    `season_id` int(10) unsigned DEFAULT NULL,
     PRIMARY KEY (`id`),
     KEY `episodes_season_id_foreign` (`season_id`),
     CONSTRAINT `episodes_season_id_foreign` FOREIGN KEY (`season_id`) REFERENCES `seasons` (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 58 DEFAULT CHARSET = utf8mb4 COLLATE = utf8_unicode_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 58 DEFAULT CHARSET = utf8mb4 ;
 
-/*!40101 SET character_set_client = @saved_cs_client */
-;
-
---
--- Dumping data for table `episodes`
---
-LOCK TABLES `episodes` WRITE;
-
-/*!40000 ALTER TABLE `episodes` DISABLE KEYS */
-;
 
 INSERT INTO
     `episodes`
@@ -1037,43 +914,20 @@ VALUES
         46
     );
 
-/*!40000 ALTER TABLE `episodes` ENABLE KEYS */
-;
 
-UNLOCK TABLES;
-
---
--- Table structure for table `genres`
---
 DROP TABLE IF EXISTS `genres`;
 
-/*!40101 SET @saved_cs_client     = @@character_set_client */
-;
-
-/*!40101 SET character_set_client = utf8 */
-;
-
 CREATE TABLE `genres` (
-    `id` int() unsigned NOT NULL AUTO_INCREMENT,
+    `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
     `created_at` timestamp NULL DEFAULT NULL,
     `updated_at` timestamp NULL DEFAULT NULL,
     `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-    `ranking` int() unsigned NOT NULL,
+    `ranking` int(10) unsigned NOT NULL,
     `active` tinyint(1) NOT NULL DEFAULT '1',
     PRIMARY KEY (`id`),
     UNIQUE KEY `genres_ranking_unique` (`ranking`)
-) ENGINE = InnoDB AUTO_INCREMENT = 13 DEFAULT CHARSET = utf8mb4 COLLATE = utf8_unicode_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 DEFAULT CHARSET = utf8mb4 ;
 
-/*!40101 SET character_set_client = @saved_cs_client */
-;
-
---
--- Dumping data for table `genres`
---
-LOCK TABLES `genres` WRITE;
-
-/*!40000 ALTER TABLE `genres` DISABLE KEYS */
-;
 
 INSERT INTO
     `genres`
@@ -1133,39 +987,16 @@ VALUES
         1
     );
 
-/*!40000 ALTER TABLE `genres` ENABLE KEYS */
-;
 
-UNLOCK TABLES;
-
---
--- Table structure for table `migrations`
---
 DROP TABLE IF EXISTS `migrations`;
 
-/*!40101 SET @saved_cs_client     = @@character_set_client */
-;
-
-/*!40101 SET character_set_client = utf8 */
-;
-
 CREATE TABLE `migrations` (
-    `id` int() unsigned NOT NULL AUTO_INCREMENT,
+    `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
     `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
     `batch` int(11) NOT NULL,
     PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 11 DEFAULT CHARSET = utf8mb4 COLLATE = utf8_unicode_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 DEFAULT CHARSET = utf8mb4 ;
 
-/*!40101 SET character_set_client = @saved_cs_client */
-;
-
---
--- Dumping data for table `migrations`
---
-LOCK TABLES `migrations` WRITE;
-
-/*!40000 ALTER TABLE `migrations` DISABLE KEYS */
-;
 
 INSERT INTO
     `migrations`
@@ -1193,47 +1024,23 @@ VALUES
         1
     );
 
-/*!40000 ALTER TABLE `migrations` ENABLE KEYS */
-;
 
-UNLOCK TABLES;
-
---
--- Table structure for table `movies`
---
 DROP TABLE IF EXISTS `movies`;
 
-/*!40101 SET @saved_cs_client     = @@character_set_client */
-;
-
-/*!40101 SET character_set_client = utf8 */
-;
-
 CREATE TABLE `movies` (
-    `id` int() unsigned NOT NULL AUTO_INCREMENT,
+    `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
     `created_at` timestamp NULL DEFAULT NULL,
     `updated_at` timestamp NULL DEFAULT NULL,
     `title` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
     `rating` decimal(3, 1) unsigned NOT NULL,
-    `awards` int() unsigned NOT NULL DEFAULT '0',
+    `awards` int(10) unsigned NOT NULL DEFAULT '0',
     `release_date` datetime NOT NULL,
-    `length` int() unsigned DEFAULT NULL,
-    `genre_id` int() unsigned DEFAULT NULL,
+    `length` int(10) unsigned DEFAULT NULL,
+    `genre_id` int(10) unsigned DEFAULT NULL,
     PRIMARY KEY (`id`),
     KEY `movies_genre_id_foreign` (`genre_id`),
     CONSTRAINT `movies_genre_id_foreign` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 22 DEFAULT CHARSET = utf8mb4 COLLATE = utf8_unicode_ci;
-
-/*!40101 SET character_set_client = @saved_cs_client */
-;
-
---
--- Dumping data for table `movies`
---
-LOCK TABLES `movies` WRITE;
-
-/*!40000 ALTER TABLE `movies` DISABLE KEYS */
-;
+) ENGINE = InnoDB AUTO_INCREMENT = 22 DEFAULT CHARSET = utf8mb4 ;
 
 INSERT INTO
     `movies`
@@ -1470,21 +1277,8 @@ VALUES
         10
     );
 
-/*!40000 ALTER TABLE `movies` ENABLE KEYS */
-;
 
-UNLOCK TABLES;
-
---
--- Table structure for table `password_resets`
---
 DROP TABLE IF EXISTS `password_resets`;
-
-/*!40101 SET @saved_cs_client     = @@character_set_client */
-;
-
-/*!40101 SET character_set_client = utf8 */
-;
 
 CREATE TABLE `password_resets` (
     `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -1492,59 +1286,25 @@ CREATE TABLE `password_resets` (
     `created_at` timestamp NULL DEFAULT NULL,
     KEY `password_resets_email_index` (`email`),
     KEY `password_resets_token_index` (`token`)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8_unicode_ci;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 ;
 
-/*!40101 SET character_set_client = @saved_cs_client */
-;
 
---
--- Dumping data for table `password_resets`
---
-LOCK TABLES `password_resets` WRITE;
-
-/*!40000 ALTER TABLE `password_resets` DISABLE KEYS */
-;
-
-/*!40000 ALTER TABLE `password_resets` ENABLE KEYS */
-;
-
-UNLOCK TABLES;
-
---
--- Table structure for table `seasons`
---
 DROP TABLE IF EXISTS `seasons`;
 
-/*!40101 SET @saved_cs_client     = @@character_set_client */
-;
-
-/*!40101 SET character_set_client = utf8 */
-;
-
 CREATE TABLE `seasons` (
-    `id` int() unsigned NOT NULL AUTO_INCREMENT,
+    `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
     `created_at` timestamp NULL DEFAULT NULL,
     `updated_at` timestamp NULL DEFAULT NULL,
     `title` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
-    `number` int() unsigned DEFAULT NULL,
+    `number` int(10) unsigned DEFAULT NULL,
     `release_date` datetime NOT NULL,
     `end_date` datetime NOT NULL,
-    `serie_id` int() unsigned DEFAULT NULL,
+    `serie_id` int(10) unsigned DEFAULT NULL,
     PRIMARY KEY (`id`),
     KEY `seasons_serie_id_foreign` (`serie_id`),
     CONSTRAINT `seasons_serie_id_foreign` FOREIGN KEY (`serie_id`) REFERENCES `series` (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 47 DEFAULT CHARSET = utf8mb4 COLLATE = utf8_unicode_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 47 DEFAULT CHARSET = utf8mb4 ;
 
-/*!40101 SET character_set_client = @saved_cs_client */
-;
-
---
--- Dumping data for table `seasons`
---
-LOCK TABLES `seasons` WRITE;
-
-/*!40000 ALTER TABLE `seasons` DISABLE KEYS */
-;
 
 INSERT INTO
     `seasons`
@@ -2010,45 +1770,22 @@ VALUES
         6
     );
 
-/*!40000 ALTER TABLE `seasons` ENABLE KEYS */
-;
 
-UNLOCK TABLES;
-
---
--- Table structure for table `series`
---
 DROP TABLE IF EXISTS `series`;
 
-/*!40101 SET @saved_cs_client     = @@character_set_client */
-;
-
-/*!40101 SET character_set_client = utf8 */
-;
 
 CREATE TABLE `series` (
-    `id` int() unsigned NOT NULL AUTO_INCREMENT,
+    `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
     `created_at` timestamp NULL DEFAULT NULL,
     `updated_at` timestamp NULL DEFAULT NULL,
     `title` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
     `release_date` datetime NOT NULL,
     `end_date` datetime NOT NULL,
-    `genre_id` int() unsigned DEFAULT NULL,
+    `genre_id` int(10) unsigned DEFAULT NULL,
     PRIMARY KEY (`id`),
     KEY `series_genre_id_foreign` (`genre_id`),
     CONSTRAINT `series_genre_id_foreign` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 7 DEFAULT CHARSET = utf8mb4 COLLATE = utf8_unicode_ci;
-
-/*!40101 SET character_set_client = @saved_cs_client */
-;
-
---
--- Dumping data for table `series`
---
-LOCK TABLES `series` WRITE;
-
-/*!40000 ALTER TABLE `series` DISABLE KEYS */
-;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 DEFAULT CHARSET = utf8mb4 ;
 
 INSERT INTO
     `series`
@@ -2108,24 +1845,10 @@ VALUES
         3
     );
 
-/*!40000 ALTER TABLE `series` ENABLE KEYS */
-;
-
-UNLOCK TABLES;
-
---
--- Table structure for table `users`
---
 DROP TABLE IF EXISTS `users`;
 
-/*!40101 SET @saved_cs_client     = @@character_set_client */
-;
-
-/*!40101 SET character_set_client = utf8 */
-;
-
 CREATE TABLE `users` (
-    `id` int() unsigned NOT NULL AUTO_INCREMENT,
+    `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
     `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
     `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
     `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -2134,46 +1857,4 @@ CREATE TABLE `users` (
     `updated_at` timestamp NULL DEFAULT NULL,
     PRIMARY KEY (`id`),
     UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8_unicode_ci;
-
-/*!40101 SET character_set_client = @saved_cs_client */
-;
-
---
--- Dumping data for table `users`
---
-LOCK TABLES `users` WRITE;
-
-/*!40000 ALTER TABLE `users` DISABLE KEYS */
-;
-
-/*!40000 ALTER TABLE `users` ENABLE KEYS */
-;
-
-UNLOCK TABLES;
-
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */
-;
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */
-;
-
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */
-;
-
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */
-;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */
-;
-
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */
-;
-
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */
-;
-
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */
-;
-
--- Dump completed on 2017-06-12 10:09:28
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 ;
